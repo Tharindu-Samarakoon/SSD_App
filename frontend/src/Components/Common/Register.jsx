@@ -22,28 +22,13 @@ const clientId =
 const onSuccess = (response) => {
   console.log("successful login res : ", response);
   localStorage.clear();
-  let register = {
-    customer_name:
-      response.profileObj.givenName + response.profileObj.familyName,
-    customer_email: response.profileObj.email,
-    customer_id: response.profileObj.googleId,
-  };
+  localStorage.setItem("token", response.tokenId);
+  localStorage.setItem("profile", JSON.stringify(response.profileObj));
 
-  console.log(register);
-
-  axios
-    .post(`${APIURL}/customer/register-customer-oauth`, register)
-    .then((res) => {
-      console.log("res", res);
-      if (res.data.code === 200) {
-        toast.success(res.data.message);
-        window.setTimeout(function () {
-          window.location.href = "/login";
-        }, 2000);
-      } else {
-        toast.error(res.data.message);
-      }
-    });
+  toast.success("Logged In");
+  window.setTimeout(function () {
+    window.location.href = "/customer-home";
+  }, 2000);
 };
 
 const onFailure = (response) => {

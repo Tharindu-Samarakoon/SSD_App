@@ -17,6 +17,15 @@ const clientId =
 
 const onSuccess = (response) => {
   console.log("successful login res : ", response);
+  console.log("successful login res : ", response);
+  localStorage.clear();
+  localStorage.setItem("token", response.tokenId);
+  localStorage.setItem("profile", JSON.stringify(response.profileObj));
+
+  toast.success("Logged In");
+  window.setTimeout(function () {
+    window.location.href = "/customer-home";
+  }, 2000);
 };
 
 const onFailure = (response) => {
