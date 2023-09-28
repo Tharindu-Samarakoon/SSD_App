@@ -12,6 +12,11 @@ const CustomerSchema = new mongoose.Schema(
       trim: true,
     },
 
+    customer_id: {
+      type: String,
+      trim: true,
+    },
+
     customer_email: {
       type: String,
       unique: true,

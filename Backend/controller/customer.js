@@ -127,6 +127,66 @@ const CustomerControllers = {
     }
   },
 
+  registerCustomerOAuth: async (req, res) => {
+    try {
+      const {
+        customer_name,
+        customer_email,
+        customer_id
+      } = req.body;
+
+      if (
+        !customer_name ||
+        !customer_id ||
+        !customer_email
+      ) {
+        return res.status(200).json({
+          code: 400,
+          success: false,
+          status: "Bad Request",
+          message: "All details must be filled.",
+        });
+      }
+
+      const check = await Customer.findOne({ customer_email });
+      if (check) {
+        return res.status(200).json({
+          code: 200,
+          success: true,
+          status: "OK",
+          CustomerDetails: check,
+          token: token,
+          message: "Logged In Successfully",
+        });
+      }
+
+      const newCustomerDetails = new Customer({
+        customer_name,
+        customer_email,
+      });
+
+      const token = jwt.sign({_id: newCustomerDetails._id}, process.env.JWT_SECRET);
+
+      await newCustomerDetails.save();
+
+      return res.status(200).json({
+        code: 200,
+        success: true,
+        status: "OK",
+        CustomerDetails: newCustomerDetails,
+        token: token,
+        message: "Registered Successfully",
+      });
+    } catch (error) {
+      return res.status(500).json({
+        code: 500,
+        success: false,
+        status: "Internal Server Error",
+        message: error.message,
+      });
+    }
+  },
+
   CustomerLogin: async (req, res) => {
     try {
       const { customer_email, customer_password } = req.body;

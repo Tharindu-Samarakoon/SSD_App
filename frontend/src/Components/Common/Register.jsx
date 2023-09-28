@@ -4,6 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { APIURL } from "../API/environment";
 import Logo from "../../assets/images/logo.png";
+import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
 
 const initialState = {
   customer_name: "",
@@ -14,12 +16,68 @@ const initialState = {
   customer_confirm_password: "",
 };
 
+const clientId =
+  "407956374755-v35u0uj4eq64quug55bu7c5v04ilik4m.apps.googleusercontent.com";
+
+const onSuccess = (response) => {
+  console.log("successful login res : ", response);
+  localStorage.clear();
+  let register = {
+    customer_name:
+      response.profileObj.givenName + response.profileObj.familyName,
+    customer_email: response.profileObj.email,
+    customer_id: response.profileObj.googleId,
+  };
+
+  console.log(register);
+
+  axios
+    .post(`${APIURL}/customer/register-customer-oauth`, register)
+    .then((res) => {
+      console.log("res", res);
+      if (res.data.code === 200) {
+        toast.success(res.data.message);
+        window.setTimeout(function () {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        toast.error(res.data.message);
+      }
+    });
+};
+
+const onFailure = (response) => {
+  console.log("Login Failed res: ", response);
+};
+
 class Register extends Component {
   constructor(props) {
     super(props);
     this.state = initialState;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+
+    gapi.load("client:auth2", start);
+  }
+
+  componentDidUpdate() {
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+
+    gapi.load("client:auth2", start);
   }
 
   onChange(e) {
@@ -243,6 +301,14 @@ class Register extends Component {
                   <button type="submit" className="btn submit mb-4">
                     Register
                   </button>
+                  <GoogleLogin
+                    clientId={clientId}
+                    buttonText="Login"
+                    onSuccess={onSuccess}
+                    onFailure={onFailure}
+                    cookiePolicy={"single_host_origin"}
+                    isSignedIn={true}
+                  />
                   <p className="forgot-w3ls text-center mb-3">
                     <a href="/" className="text-da">
                       Forgot your password?

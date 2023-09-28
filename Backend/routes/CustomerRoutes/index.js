@@ -4,6 +4,8 @@ const AuthMiddle = require("../../middlewares/auth");
 
 routes.post("/register-customer", CustomeRoutes.registerCustomer);
 
+routes.post("/register-customer-oauth", CustomeRoutes.registerCustomerOAuth);
+
 routes.post("/login-customer", CustomeRoutes.CustomerLogin);
 
 routes.get("/customer-details", AuthMiddle, CustomeRoutes.getCustomerDetails);
