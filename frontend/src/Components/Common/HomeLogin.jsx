@@ -8,7 +8,19 @@ import Sub from "../../assets/images/sub.png";
 import User from "../../assets/images/user.png";
 import { APIURL } from "../API/environment";
 import axios from "axios";
+import { GoogleLogout } from "react-google-login";
+import { toast } from "react-toastify";
 
+const onSuccess = () => {
+  console.log("Log out successfull!");
+  toast.success("Logged Out");
+  window.setTimeout(function () {
+    window.location.href = "/";
+  }, 2000);
+};
+
+const clientId =
+  "407956374755-v35u0uj4eq64quug55bu7c5v04ilik4m.apps.googleusercontent.com";
 class HomeLogin extends Component {
   constructor(props) {
     super(props);
@@ -150,6 +162,13 @@ class HomeLogin extends Component {
 
                     <li>
                       <a href="/all_orders">Orders</a>
+                    </li>
+                    <li>
+                      <GoogleLogout
+                        clientId={clientId}
+                        buttonText={"Logout"}
+                        onLogoutSuccess={onSuccess}
+                      />
                     </li>
 
                     <li>

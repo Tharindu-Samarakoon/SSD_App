@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { APIURL } from "../API/environment";
-import { GoogleLogin } from "react-google-login";
+import { GoogleLogin, GoogleLogout } from "react-google-login";
 import Logo from "../../assets/images/logo.png";
 import { gapi } from "gapi-script";
 
@@ -232,6 +232,7 @@ class Login extends Component {
                             Register
                           </a>
                         </li>
+                        <li></li>
                       </ul>
                     </li>
 
