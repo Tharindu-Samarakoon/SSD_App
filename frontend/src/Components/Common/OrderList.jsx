@@ -44,7 +44,12 @@ const OrderList = () => {
     async function gedData() {
       try {
         const response = await axios.get(
-          `${APIURL}/order/get_all_order_details`
+          `${APIURL}/order/get_user_order_details`,
+          {
+            headers: {
+              Authorization: localStorage.getItem("token"),
+            },
+          }
         );
         if (response.status === 200) {
           SetOrder(response.data.AllOrderDetails);

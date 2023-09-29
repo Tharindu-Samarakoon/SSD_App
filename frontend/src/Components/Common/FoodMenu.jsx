@@ -15,23 +15,27 @@ class FoodMenu extends Component {
   }
 
   async componentDidMount() {
-    await axios
-      .get(`${APIURL}/customer/customer-details`, {
-        headers: {
-          Authorization: localStorage.getItem("token"),
-        },
-      })
-      .then((response) => {
-        this.setState({ customer: response.data.CustomerDetails });
-        console.log("customer =>", this.state.customer);
-      });
+    try {
+      await axios
+        .get(`${APIURL}/customer/customer-details`, {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        })
+        .then((response) => {
+          this.setState({ customer: response.data.CustomerDetails });
+          console.log("customer =>", this.state.customer);
+        });
 
-    await axios
-      .get(`${APIURL}/menulist/get-all-menu-items`)
-      .then((response) => {
-        this.setState({ menuList: response.data.MenuItems });
-        console.log("menuList =>", this.state.menuList);
-      });
+      await axios
+        .get(`${APIURL}/menulist/get-all-menu-items`)
+        .then((response) => {
+          this.setState({ menuList: response.data.MenuItems });
+          console.log("menuList =>", this.state.menuList);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }
   render() {
     return (

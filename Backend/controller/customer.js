@@ -263,18 +263,34 @@ const CustomerControllers = {
 
   getCustomerDetails: async (req, res) => {
     try {
-      const customer = await Customer.findById({ _id: req.customer.id }).select(
-        "-customer_password"
-      );
+      if(req.tType){
+        console.log(req.customer);
+        console.log("hello");
+        const customer = await Customer.findById({ _id: req.customer._id }).select(
+          "-customer_password"
+        );
+        console.log(customer);
+        return res.status(200).json({
+          code: 200,
+          success: true,
+          status: "OK",
+          CustomerDetails: customer,
+          message: "Customer details recieved",
+        });
+        
+      }
+
+      const customer = {_id: req.customer.sub, customer_name: req.customer.given_name + " " + req.customer.family_name}
 
       return res.status(200).json({
         code: 200,
         success: true,
         status: "OK",
         CustomerDetails: customer,
-        message: "Customer details recieved",
+        message: "OAuth",
       });
     } catch (error) {
+      console.log(error);
       return res.status(500).json({
         code: 500,
         success: false,

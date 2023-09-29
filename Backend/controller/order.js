@@ -86,8 +86,13 @@ const OrderControllers = {
 
   getAllOrderDetailsByUserId: async (req, res) => {
     try {
-      if (req.params && req.params.id) {
-        const OrderDetails = await Order.find({ user_id: req.params.id });
+      console.log("User orders");
+
+      if (req.tType) {
+        console.log(req.customer._id);
+        const OrderDetails = await Order.find({ user_id: req.customer._id });
+        console.log(OrderDetails);
+
 
         return res.status(200).json({
           code: 200,
@@ -96,6 +101,19 @@ const OrderControllers = {
           AllOrderDetails: OrderDetails,
           message: "All order detaials recieved.",
         });
+      } else {
+          console.log(req.customer._id);
+          const OrderDetails = await Order.find({ user_id: req.customer.sub });
+          console.log(OrderDetails);
+  
+  
+          return res.status(200).json({
+            code: 200,
+            success: true,
+            status: "OK",
+            AllOrderDetails: OrderDetails,
+            message: "All order detaials recieved.",
+          });
       }
     } catch (error) {
       return res.status(500).json({
@@ -107,13 +125,18 @@ const OrderControllers = {
     }
   },
 
+
+
   getAllOrderDetailsByApproved: async (req, res) => {
     try {
-      if (req.params && req.params.id) {
+      if (req.tType) {
+        console.log(req.customer._id);
         const OrderDetails = await Order.find({
-          user_id: req.params.id,
+          user_id: req.customer._id,
           isApprove: 1,
         });
+        console.log(OrderDetails);
+
 
         return res.status(200).json({
           code: 200,
@@ -122,6 +145,19 @@ const OrderControllers = {
           AllOrderDetails: OrderDetails,
           message: "All order detaials recieved.",
         });
+      } else {
+          console.log(req.customer._id);
+          const OrderDetails = await Order.find({ user_id: req.customer.sub });
+          console.log(OrderDetails);
+  
+  
+          return res.status(200).json({
+            code: 200,
+            success: true,
+            status: "OK",
+            AllOrderDetails: OrderDetails,
+            message: "All order detaials recieved.",
+          });
       }
     } catch (error) {
       return res.status(500).json({
@@ -135,11 +171,14 @@ const OrderControllers = {
 
   getAllOrderDetailsByCancled: async (req, res) => {
     try {
-      if (req.params && req.params.id) {
+      if (req.tType) {
+        console.log(req.customer._id);
         const OrderDetails = await Order.find({
-          user_id: req.params.id,
+          user_id: req.customer._id,
           isApprove: 0,
         });
+        console.log(OrderDetails);
+
 
         return res.status(200).json({
           code: 200,
@@ -148,6 +187,19 @@ const OrderControllers = {
           AllOrderDetails: OrderDetails,
           message: "All order detaials recieved.",
         });
+      } else {
+          console.log(req.customer._id);
+          const OrderDetails = await Order.find({ user_id: req.customer.sub });
+          console.log(OrderDetails);
+  
+  
+          return res.status(200).json({
+            code: 200,
+            success: true,
+            status: "OK",
+            AllOrderDetails: OrderDetails,
+            message: "All order detaials recieved.",
+          });
       }
     } catch (error) {
       return res.status(500).json({

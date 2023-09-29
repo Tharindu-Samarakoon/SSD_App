@@ -77,6 +77,7 @@ const MenuItemControllers = {
 
   getAllMenuItems: async (req, res) => {
     try {
+      console.log("Get menu items");
       const allMenuItem = await Menu.find().populate(
         "item_price_type",
         "type_small type_medium type_large"
