@@ -8,6 +8,7 @@ import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Loader from "react-loader-spinner";
+import DOMPurify from "dompurify";
 
 const OrderList = () => {
   // async componentDidMount() {
@@ -375,7 +376,7 @@ const OrderList = () => {
                           <img
                             style={{ width: 50, height: 50 }}
                             alt="..."
-                            src={item.item_url}
+                            src={DOMPurify.sanitize(item.item_url)}
                             className="avatar avatar-sm rounded-circle me-2"
                           />
                         </td>
