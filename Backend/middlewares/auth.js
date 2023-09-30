@@ -1,6 +1,10 @@
+const { default: axios } = require("axios");
 const webToken = require("jsonwebtoken");
+const {OAuth2Client} = require('google-auth-library');
 
-const auth = (req, res, next) => {
+const client = new OAuth2Client();
+
+const auth = async (req, res, next) => {
   try {
     const token = req.header("Authorization");
     console.log(token);
@@ -41,10 +45,16 @@ const auth = (req, res, next) => {
       next();
     } else {
       console.log("Google Token");
-      const decodedData = webToken.decode(token);
-      req.customer = decodedData
+      const ticket = await client.verifyIdToken({
+          idToken: token,
+          audience: process.env.CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+          // Or, if multiple clients access the backend:
+          //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+      });
+      const payload = ticket.getPayload();
+      req.customer = payload
       req.tType = false
-      console.log(decodedData);
+      console.log(payload);
       next();
     }
   } catch (error) {
