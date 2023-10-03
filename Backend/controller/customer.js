@@ -189,7 +189,7 @@ const CustomerControllers = {
 
   CustomerLogin: async (req, res) => {
     const { customer_email, customer_password } = req.body;
-    console.log(customer_email, customer_password);
+    console.log("User details : ", customer_email, customer_password);
     try {
 
       if (!customer_email || !customer_password) {
