@@ -16,6 +16,8 @@ const initialState = {
   image: null,
 };
 
+const csrfToken = "blah";
+
 class AddFoodMenu extends Component {
   constructor(props) {
     super(props);
@@ -221,6 +223,11 @@ class AddFoodMenu extends Component {
                                   onSubmit={this.onSubmit}
                                   method="post"
                                 >
+                                  <input
+                                    type="hidden"
+                                    name="_csrf"
+                                    value={csrfToken}
+                                  />
                                   <div className="form-group">
                                     <label>Food Name</label>
                                     <input

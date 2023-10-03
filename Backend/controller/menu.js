@@ -35,7 +35,7 @@ const MenuItemControllers = {
         });
       }
 
-      const ItemNameCheck = await Menu.findOne({ item_name });
+      const ItemNameCheck = await Menu.findOne({ item_name : item_name.toString() });
       if (ItemNameCheck) {
         return res.status(200).json({
           code: 400,
@@ -46,14 +46,14 @@ const MenuItemControllers = {
       }
 
       const newMenuList = new Menu({
-        item_name,
-        item_type,
-        item_time,
-        item_price_type_small,
-        item_price_type_medium,
-        item_price_type_large,
-        item_url: result.secure_url,
-        cloudinary_id: result.public_id,
+        item_name: item_name.toString(),
+        item_type: item_type.toString(),
+        item_time: item_time.toString(),
+        item_price_type_small: item_price_type_small.toString(),
+        item_price_type_medium: item_price_type_medium.toString(),
+        item_price_type_large: item_price_type_large.toString(),
+        item_url: result.secure_url.toString(),
+        cloudinary_id: result.public_id.toString(),
       });
 
       await newMenuList.save();
