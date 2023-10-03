@@ -8,8 +8,6 @@ const helmet = require("helmet")
 
 const app = express();
 
-
-
 // Use Helmet middleware to disable X-Powered-By header
 app.use(helmet());
 
