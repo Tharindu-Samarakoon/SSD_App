@@ -206,23 +206,6 @@ class Login extends Component {
                           </a>
                         </li>
                         <li>
-                          <a className="drop-text" href="#blog">
-                            Gym
-                          </a>
-                        </li>
-
-                        <li>
-                          <a className="drop-text" href="#blog">
-                            Parking
-                          </a>
-                        </li>
-
-                        <li>
-                          <a className="drop-text" href="single.html">
-                            Laundry
-                          </a>
-                        </li>
-                        <li>
                           <a className="drop-text" href="/login">
                             Login
                           </a>

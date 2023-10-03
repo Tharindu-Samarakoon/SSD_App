@@ -29,29 +29,12 @@ import DinnerFoodMenu from "./Components/Common/DinnerFoodMenu";
 import GetAllOrderList from "./Components/Admin/Resturant/GetAllOrderList";
 import ApprovedOrderList from "./Components/Common/ApprovedOrderList";
 import CancledOrderList from "./Components/Common/CancledOrderList";
-import GymMenuList from "./Components/Common/GymMenuList";
-import BookingGym from "./Components/Common/BookingGym";
 
 import EmployeeDash from "./Components/Admin/Employee/Employee";
 import AddEmployee from "./Components/Admin/Employee/AddEmployee";
 import GetAllEmployee from "./Components/Admin/Employee/GetAllEmployee";
 import EditEmployee from "./Components/Admin/Employee/EditEmployee";
 import AddSalary from "./Components/Admin/Employee/AddSalary";
-
-import AddParkingList from "./Components/Admin/Parking/AddParkingList";
-import ParkingDash from "./Components/Admin/Parking/Parking";
-import GetAllParkingList from "./Components/Admin/Parking/GetAllParkingList";
-import EditParking from "./Components/Admin/Parking/EditParking";
-
-import StoresDash from "./Components/Admin/Stores/Stores";
-import AddStoreItem from "./Components/Admin/Stores/AddStoreItem";
-import GetAllStoresItem from "./Components/Admin/Stores/GetAllStoresItem";
-import EditStoresItem from "./Components/Admin/Stores/EditStoresItem";
-
-import LaundryDash from "./Components/Admin/Laundry/Laundry";
-import AddLaundrySchedule from "./Components/Admin/Laundry/AddLaundrySchedule";
-import GetAllLaundrySchedule from "./Components/Admin/Laundry/GetAllLaundrySchedule";
-import EditLaundrySchedule from "./Components/Admin/Laundry/EditLaundrySchedule";
 
 import RoomDash from "./Components/Admin/Room/Room";
 import AddRoom from "./Components/Admin/Room/AddRoom";
@@ -62,33 +45,15 @@ import GetDeluxRooms from "./Components/Admin/Room/GetDeluxRooms";
 import GetLuxaryRooms from "./Components/Admin/Room/GetLuxaryRooms";
 import EditRoom from "./Components/Admin/Room/EditRoom";
 
-import GymDash from "./Components/Admin/Gym/Gym";
-import AddGym from "./Components/Admin/Gym/AddGym";
-import GetAllGymSchedule from "./Components/Admin/Gym/GetAllGymSchedule";
-import EditSchedule from "./Components/Admin/Gym/EditSchedule";
-import GetAllGymBooking from "./Components/Admin/Gym/GetAllGymBooking";
 import GetAllEmployeeSalary from "./Components/Admin/Employee/GetAllEmployeeSalary";
 import GetAllEmployeePayeedSalary from "./Components/Admin/Employee/GetAllEmployeePayeedSalary";
-import AddLiquor from "./Components/Admin/Stores/AddLiquor";
-import GetAllLiquorList from "./Components/Admin/Stores/GetAllLiquorList";
-import LiqourList from "./Components/Common/LiqourList";
-import SingleLiquor from "./Components/Common/SingleLiquor";
-import LiquorOrderList from "./Components/Common/LiquorOrderList";
-import GetLiquorOrderList from "./Components/Admin/Stores/GetLiquorOrderList";
+
 import RoomOrderList from "./Components/Common/RoomOrderList";
 import RoomList from "./Components/Common/RoomList";
 import SingleRoom from "./Components/Common/SingleRoom";
 import GetRoomsOrderList from "./Components/Admin/Room/GetRoomsOrderList";
 import CheckOrderStatus from "./Components/Admin/Resturant/CheckOrderStatus";
-import CheckBookStatus from "./Components/Admin/Gym/CheckBookStatus";
-import CheckLiquorOrderStatus from "./Components/Admin/Stores/CheckLiquorOrderStatus";
 import CheckRoomOrderStatus from "./Components/Admin/Room/CheckRoomOrderStatus";
-import ParkingList from "./Components/Common/ParkingList";
-import SinglePark from "./Components/Common/SinglePark";
-import GetAllParkingBookings from "./Components/Admin/Parking/GetAllParkingBookings";
-import CheckBookingParkStatus from "./Components/Admin/Parking/CheckBookingParkStatus";
-import LaundryList from "./Components/Common/LaundryList"; 
-import GetLaundryScheduleReports from "./Components/Admin/Laundry/GetLaundryScheduleReports";
 
 function App() {
   return (
@@ -124,8 +89,6 @@ function App() {
             component={ApprovedOrderList}
           />
           <Route path="/cancle_order_list" exact component={CancledOrderList} />
-          <Route path="/gym_list" exact component={GymMenuList} />
-          <Route path="/book_gym_schedule/:id" exact component={BookingGym} />
           {/* Restuarant  Route */}
           <Route path="/restuarant-dash" exact component={RestuarnatMenu} />
           <Route path="/add-food-menu" exact component={AddFoodMenu} />
@@ -182,41 +145,7 @@ function App() {
             component={EditEmployee}
           />
           <Route path="/add_emploee_salary/:id" exact component={AddSalary} />
-          {/* Parking Routes */}
-          <Route path="/parking-dash" exact component={ParkingDash} />
-          <Route path="/add-parking-list" exact component={AddParkingList} />
-          <Route path="/get-parking-list" exact component={GetAllParkingList} />
-          <Route path="/edit-parking-list/:id" exact component={EditParking} />
-          {/* Stores Routes */}
-          <Route path="/stores-dash" exact component={StoresDash} />
-          <Route path="/add-stores-item" exact component={AddStoreItem} />
-          <Route
-            path="/get-all-stores-item"
-            exact
-            component={GetAllStoresItem}
-          />
-          <Route
-            path="/edit-stores-item/:id"
-            exact
-            component={EditStoresItem}
-          />
-          {/* Laundry Routes */}
-          <Route path="/laundry-dash" exact component={LaundryDash} />
-          <Route
-            path="/add-laundry-schedule"
-            exact
-            component={AddLaundrySchedule}
-          />
-          <Route
-            path="/get-all-laundry-schedule"
-            exact
-            component={GetAllLaundrySchedule}
-          />
-          <Route
-            path="/edit-laundry-schedule/:id"
-            exact
-            component={EditLaundrySchedule}
-          />
+    
           {/* Room Routes */}
           <Route path="/room-dash" exact component={RoomDash} />
           <Route path="/add-new-room" exact component={AddRoom} />
@@ -246,13 +175,6 @@ function App() {
             component={GetLuxaryRooms}
           />
           <Route path="/edit-rooms-details/:id" exact component={EditRoom} />
-          {/* Gym Routes */}
-          <Route path="/gym-dash" exact component={GymDash} />
-          <Route path="/add-new-gym" exact component={AddGym} />
-          <Route path="/get-all-gym" exact component={GetAllGymSchedule} />
-          <Route path="/get_all_book_gym" exact component={GetAllGymBooking} />
-          <Route path="/get_all_book_gym_status" exact component={CheckBookStatus} />
-          <Route path="/edit-gym-schedule/:id" exact component={EditSchedule} />
 
           <Route
             path="/get_all_salary"
@@ -265,31 +187,10 @@ function App() {
             component={GetAllEmployeePayeedSalary}
           />
 
-          <Route path="/add_liquor" exact component={AddLiquor} />
-          <Route path="/get_liquor" exact component={GetAllLiquorList} />
-          <Route path="/get_liquor_customer" exact component={LiqourList} />
-          <Route path="/check_liquor_order_status" exact component={CheckLiquorOrderStatus} />
-          <Route
-            path="/get_liquor_customer/:id"
-            exact
-            component={SingleLiquor}
-          />
-          <Route path="/get_liquor_orders" exact component={LiquorOrderList} />
-          <Route
-            path="/get_all_liquor_orders"
-            exact
-            component={GetLiquorOrderList}
-          />
+         
           <Route path="/room_list_customer" exact component={RoomList} />
           <Route path="/get_all_room_orders" exact component={RoomOrderList} />
           <Route path="/get_room_details/:id" exact component={SingleRoom} />
-          <Route path="/get_parking_slot" exact component={ParkingList} />
-          <Route path="/get_parking_slot/:id" exact component={SinglePark} />
-          <Route path="/get_all_parking_slot" exact component={GetAllParkingBookings} />
-          <Route path="/check_all_parking_slot" exact component={CheckBookingParkStatus} />
-          <Route path="/get_laundry_list" exact component={LaundryList} />
-          <Route path="/get_laundry_report" exact component={GetLaundryScheduleReports} />
-
 
           <Route path="/check_all_order_status" exact component={CheckOrderStatus} />
           <Route path="/check_all_room_order_status" exact component={CheckRoomOrderStatus} />

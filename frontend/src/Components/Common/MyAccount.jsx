@@ -190,15 +190,6 @@ class MyAccount extends Component {
                     <li>
                       <a href="/food-menu">Rooms</a>
                     </li>
-
-                    <li>
-                      <a href="/food-menu">Gym</a>
-                    </li>
-
-                    <li>
-                      <a href="/food-menu">Laundry</a>
-                    </li>
-
                     <li>
                       <Link
                         to="https://w3layouts.com/"

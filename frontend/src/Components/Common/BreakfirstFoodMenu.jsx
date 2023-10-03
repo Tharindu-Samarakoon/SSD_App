@@ -122,14 +122,6 @@ class BreakfirstFoodMenu extends Component {
                     <li>
                       <a href="/room_list_customer">Rooms</a>
                     </li>
-
-                    <li>
-                      <a href="/gym_list">Gym</a>
-                    </li>
-
-                    <li>
-                      <a href="/get_liquor_customer">Liquor</a>
-                    </li>
                     <li>
                       <a href="/all_orders">Orders</a>
                     </li>
