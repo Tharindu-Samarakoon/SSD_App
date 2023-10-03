@@ -38,7 +38,7 @@ const auth = async (req, res, next) => {
       //     }
       //   }
       // );
-      const decodedData = webToken.verify(token, "something")
+      const decodedData = webToken.verify(token, process.env.JWT_SECRET)
       console.log(decodedData);
       req.customer = decodedData
       req.tType = true

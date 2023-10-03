@@ -188,8 +188,9 @@ const CustomerControllers = {
   },
 
   CustomerLogin: async (req, res) => {
+    const { customer_email, customer_password } = req.body;
+    console.log(customer_email, customer_password);
     try {
-      const { customer_email, customer_password } = req.body;
 
       if (!customer_email || !customer_password) {
         return res.status(200).json({
