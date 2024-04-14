@@ -7,7 +7,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.1",
-    "dompurify": "^3.0.6",
+    "dompurify": "^3.0.11",
     "gapi-script": "^1.2.0",
     "jspdf": "^2.3.1",
     "jspdf-autotable": "^3.5.14",
